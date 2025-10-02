@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Form</title>
+  <style>
+    body {
+      background-image: url(https://i.pinimg.com/originals/02/01/ca/0201ca2a448716e47669910a0ea4a886.jpg);
+      background-size: cover;
+      font-family: sans-serif;
+    }
+    .form-container {
+      background-image: url(https://i.ytimg.com/vi/v6e04-rkazE/maxresdefault.jpg);
+      background-size: cover;
+      padding: 20px;
+      margin: 30px auto;
+      width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(7, 4, 4, 0.2);
+    }
+    .form-container label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .form-container input {
+      width: 95%;
+      padding: 5px;
+      margin-top: 4px;
+    }
+    .form-container button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      width: 80%;
+      background: #4043e4;
+    }
+    table, th, td {
+      border: 1px solid rgb(0, 0, 0);
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #4043e4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <label>Enter ID</label>
+    <input type="text" id="id">
+    <label>Enter Last Name</label>
+    <input type="text" id="lastname">
+    <label>Enter First Name</label>
+    <input type="text" id="firstname">
+    <label>Enter Middle Name</label>
+    <input type="text" id="middlename">
+    <label>Enter Course</label>
+    <input type="text" id="course">
+    <label>Enter Section</label>
+    <input type="text" id="section">
+    <button onclick="addData()">Submit</button>
+  </div>
+
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>ID Number</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Course</th>
+        <th>Section</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    function addData() {
+      let id = document.getElementById("id").value;
+      let lastname = document.getElementById("lastname").value;
+      let firstname = document.getElementById("firstname").value;
+      let middlename = document.getElementById("middlename").value;
+      let course = document.getElementById("course").value;
+      let section = document.getElementById("section").value;
+
+      if(id && lastname && firstname && middlename && course && section){
+        let table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+        let newRow = table.insertRow();
+
+        newRow.insertCell(0).innerText = id;
+        newRow.insertCell(1).innerText = lastname;
+        newRow.insertCell(2).innerText = firstname;
+        newRow.insertCell(3).innerText = middlename;
+        newRow.insertCell(4).innerText = course;
+        newRow.insertCell(5).innerText = section;
+
+        // clear input fields after submission
+        document.querySelectorAll(".form-container input").forEach(input => input.value = "");
+      } else {
+        alert("Please fill all fields before submitting.");
+      }
+    }
+  </script>
+
+</body>
+</html>
